@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "ragtime"
+version = "0.1.0"
+description = "RAG pipeline using langchain and OpenAI"
+authors = ["Andrew Candela <andrewcandela@Andrews-MacBook-Pro.local>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">3.12, <3.13"
+langchain = "^0.2.1"
+langchain-openai = "^0.1.7"
+chromadb = "^0.5.0"
+langchain-community = "^0.2.1"
+langchain-chroma = "^0.1.1"
+langchainhub = "^0.1.16"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
