@@ -18,6 +18,13 @@ sse-starlette = "^2.1.0"
 pydantic = "1.10.13"
 pypdf = "^4.2.0"
 numpy = "^1.26.4"
+langchain-postgres = "^0.0.6"
+celery = {extras = ["redis"], version = "^5.4.0"}
+gevent = "^24.2.1"
+psycopg2 = "^2.9.9"
+beautifulsoup4 = "^4.12.3"
+lxml = "^5.3.0"
+threading-practice = {path = "../threading-practice"}
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.4.2"

@@ -23,17 +23,17 @@ attemt to run an Ollama hosted model.
 """
 
 from fastapi import FastAPI
-from ragtime.lib.embeddings import EmbeddingDatabase, Document
-from typing import Any
+from ragtime.lib.embeddings import ChromaVectorDB, Document
+from typing import Any, cast
 
 
 app = FastAPI(
     title="Serve Chroma Database",
     version="0.1",
-    description=__doc__,
+    description=cast(str, __doc__),
 )
 
-vector_db = EmbeddingDatabase()
+vector_db = ChromaVectorDB()
 
 
 @app.post("/embed/")
@@ -44,6 +44,16 @@ async def embed_doc(document_uri: str) -> str:
     """
     await vector_db.add_doc([document_uri])
     return f"Thanks for indexing {document_uri}"
+
+
+@app.post("/scrape/")
+async def scrape(website: str) -> str:
+    """
+    Crawls a website and index the content.
+    Passes the location of a valid URL.
+    """
+    await vector_db.crawl_url(website)
+    return f"Thanks for indexing {website}"
 
 
 @app.get("/query/")
